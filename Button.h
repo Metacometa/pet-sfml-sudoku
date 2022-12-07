@@ -6,10 +6,16 @@
 
 
 class Button {
+	sf::Texture texture;
 	sf::Sprite sprite;
 public:
 	//Constructor / Destructor
 	Button(std::string file);
 	virtual ~Button();
+
+	//Getters
+
+	//Setters
+	const sf::Sprite getSprite() const;
 };
 

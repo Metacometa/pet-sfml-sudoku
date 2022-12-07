@@ -69,7 +69,8 @@ void Game::render() {
 
 	//Draw game objects
 	// 
-	Button kek("menu/exit.png");
+	Button kek("assets/load_game.png");
+	this->window->draw(kek.getSprite());
 	//this->window->draw();
 
 	this->window->display();
