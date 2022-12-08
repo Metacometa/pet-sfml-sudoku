@@ -3,14 +3,14 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 
 
 class Button {
-	sf::Texture texture;
 	sf::Sprite sprite;
 public:
 	//Constructor / Destructor
-	Button(std::string file);
+	Button(sf::Texture* texture);
 	virtual ~Button();
 
 	//Getters

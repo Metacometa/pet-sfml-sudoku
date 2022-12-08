@@ -2,12 +2,14 @@
 #include "Button.h"
 
 class Screen {
-	Button* buttons;
+	//Resources
+	std::vector<Button*> buttons;
 public:
-	int k;
 	//Constructor / Destructor
 	Screen();
-	Screen(int lol);
 	virtual ~Screen();
+
+	//Functions
+	void addButton(const sf::Texture *texture);
 };
 

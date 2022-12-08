@@ -16,16 +16,19 @@ class Game {
 	sf::Event ev;
 
 	//Screen
-	enum class screenState {MENU, LOAD, GAME};
-	std::vector<Screen> menu;	
+	enum class screenState {MENU, LOAD, GAME};  
 	screenState currentScreen;
 
+	//Resources
+	std::map<std::string, sf::Texture*> textures;
+	std::vector<Screen*> menu;
+	
 	//Private functions
 	void initVariables();
 	void initWindow();
-	void initScreen();
+	void initTextures();
+	void initScreens();
 public:
-
 	//Constructor / Destructor
 	Game();
 	virtual ~Game();

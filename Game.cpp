@@ -12,20 +12,42 @@ void Game::initWindow() {
 	this->window = new sf::RenderWindow(videoMode, "Sudoku");
 }
 
-void Game::initScreen() {
-	this->currentScreen = screenState::MENU;
-	int k = 6;
-	menu.push_back(Screen());
+void Game::initTextures() {
+	this->textures["NEW"] = new sf::Texture();
+	this->textures["NEW"]->loadFromFile("assets/new_game.png");
+
+	this->textures["LOAD"] = new sf::Texture();
+	this->textures["LOAD"]->loadFromFile("assets/load_game.png");
+
+	this->textures["EXIT"] = new sf::Texture();
+	this->textures["EXIT"]->loadFromFile("assets/exit.png");
+}
+
+void Game::initScreens() {
+	this->currentScreen = screenState::MENU; 
+	this->menu.push_back(new Screen());
+	this->menu[(int)screenState::MENU]->addButton(this->textures["NEW"]);
+
+	this->menu.push_back(new Screen());
+
+	this->menu.push_back(new Screen());
 }
 
 //Constructor / Destructor
 Game::Game() {
 	initVariables();
 	initWindow();
-	initScreen();
+	initScreens();
 }
 
 Game::~Game() {
+	//Delete menu
+	for (auto& i : menu)
+		delete i;
+
+	//Delete textures
+	for (auto& i : textures)
+		i.second;
 	delete this->window;
 }
 

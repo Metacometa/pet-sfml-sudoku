@@ -2,13 +2,17 @@
 
 //Constructor / Destructor
 Screen::Screen() {
-	k = 5;
 }
 
-Screen::Screen(int lol) {
-	k = lol;
-}
-
-Screen::~Screen(){
+Screen::~Screen() {
 
 }
+
+//Functions
+void Screen::addButton(const sf::Texture *texture) {
+
+}
+
+
+
+
