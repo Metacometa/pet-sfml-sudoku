@@ -1,13 +1,9 @@
 #include "Button.h"
 
 //Constructor / Destructor
-Button::Button(const sf::Texture* texture, const sf::Vector2f& pos) : InterfaceComponent(texture, pos) {
+Button::Button(const sf::Texture* texture, const sf::Vector2f& pos) : InterfaceComponent(texture, pos) {}
 
-}
-
-Button::~Button(){
-
-}
+Button::~Button(){}
 
 //Private functions
 void Button::shrink(const sf::Vector2f& mousePos) {
@@ -17,7 +13,7 @@ void Button::shrink(const sf::Vector2f& mousePos) {
 		- Change position
 		Shrinks buttons then moise is pointed.
 	*/
-	if (this->sprite.getGlobalBounds().contains(mousePos)) {
+	if (isPointed(mousePos)) {
 
 		//Save old width and height
 		sf::Vector2f old_measure;

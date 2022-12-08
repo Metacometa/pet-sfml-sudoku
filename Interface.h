@@ -3,7 +3,7 @@
 
 class Interface {
 	//Resources
-	std::vector<InterfaceComponent*> &interface;
+	std::vector<InterfaceComponent*> interface;
 public:
 	//Constructor / Destructor
 	Interface();	
@@ -11,7 +11,7 @@ public:
 
 	//Functions
 	void addButton(const sf::Texture* texture, const sf::Vector2f& pos);
-	void addImages(const sf::Texture* texture, const sf::Vector2f& pos);
+	void addImage(const sf::Texture* texture, const sf::Vector2f& pos);
 
 	void updateButtons(const sf::Vector2f& mousePos);
 

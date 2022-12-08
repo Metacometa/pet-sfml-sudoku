@@ -33,7 +33,7 @@ void Game::initInterface() {
 
 	//create starting screen
 	this->menu.push_back(Interface());
-	this->menu[(int)interfaceState::MENU].addButton(this->textures["TITLE"], TITLE_POS);
+	this->menu[(int)interfaceState::MENU].addImage(this->textures["TITLE"], TITLE_POS);
 	this->menu[(int)interfaceState::MENU].addButton(this->textures["NEW"], NEW_GAME_POS);
 	this->menu[(int)interfaceState::MENU].addButton(this->textures["LOAD"], LOAD_GAME_POS);
 	this->menu[(int)interfaceState::MENU].addButton(this->textures["EXIT"], EXIT_POS);
@@ -58,7 +58,7 @@ Game::~Game() {
 	*/
 		
 	//Delete textures
-	for (auto& i : this->textures)
+	for (auto &i : this->textures)
 		delete i.second;
 
 	//Delete window

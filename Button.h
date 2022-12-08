@@ -1,4 +1,4 @@
-#include "InterfaceComponent.h"
+#include "Image.h"
 
 class Button : public InterfaceComponent{
 	//Private functions
@@ -9,6 +9,6 @@ public:
 	virtual ~Button();
 
 	//Functions
-	void update(const sf::Vector2f& mousePos);
+	virtual void update(const sf::Vector2f& mousePos);
 };
 

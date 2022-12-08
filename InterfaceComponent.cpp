@@ -7,18 +7,23 @@ InterfaceComponent::InterfaceComponent(const sf::Texture* texture, const sf::Vec
 	this->pos = pos;
 }
 
-InterfaceComponent::~InterfaceComponent() {
-}
+InterfaceComponent::~InterfaceComponent() {}
 
 //Getters
 const sf::Sprite InterfaceComponent::getSprite() const {
 	return this->sprite;
 }
 
-//Functions
-void InterfaceComponent::update(const sf::Vector2f& mousePos) {
+//Setters
 
+//Accessors
+const bool InterfaceComponent::isPointed(const sf::Vector2f& mousePos) const
+{
+	return this->sprite.getGlobalBounds().contains(mousePos);
 }
+
+//Functions
+void InterfaceComponent::update(const sf::Vector2f& mousePos) {}
 
 void InterfaceComponent::render(sf::RenderTarget* target) {
 	target->draw(this->sprite);
