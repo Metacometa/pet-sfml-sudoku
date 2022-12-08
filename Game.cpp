@@ -14,6 +14,9 @@ void Game::initWindow() {
 
 void Game::initTextures() {
 	//load our textures to map
+	this->textures["TITLE"] = new sf::Texture();
+	this->textures["TITLE"]->loadFromFile("assets/sudoku.png");
+
 	this->textures["NEW"] = new sf::Texture();
 	this->textures["NEW"]->loadFromFile("assets/new_game.png");
 
@@ -30,6 +33,7 @@ void Game::initInterface() {
 
 	//create starting screen
 	this->menu.push_back(Interface());
+	this->menu[(int)interfaceState::MENU].addButton(this->textures["TITLE"], TITLE_POS);
 	this->menu[(int)interfaceState::MENU].addButton(this->textures["NEW"], NEW_GAME_POS);
 	this->menu[(int)interfaceState::MENU].addButton(this->textures["LOAD"], LOAD_GAME_POS);
 	this->menu[(int)interfaceState::MENU].addButton(this->textures["EXIT"], EXIT_POS);
@@ -124,7 +128,7 @@ void Game::render() {
 	switch (this->currentInterface) {
 		case interfaceState::MENU:
 			//render buttons of starting menu
-			menu[(int)interfaceState::MENU].renderButtons(this->window);
+			menu[(int)interfaceState::MENU].renderInterfaceComponents(this->window);
 			break;
 		case interfaceState::LOAD:
 			break;

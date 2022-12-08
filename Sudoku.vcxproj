@@ -153,12 +153,14 @@
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="InterfaceComponent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Interface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="InterfaceComponent.h" />
     <ClInclude Include="Properties.h" />
     <ClInclude Include="Interface.h" />
   </ItemGroup>

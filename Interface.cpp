@@ -2,6 +2,7 @@
 
 //Constructor / Destructor
 Interface::Interface() {
+	this->interface = nullptr;
 }
 
 Interface::~Interface() {
@@ -14,17 +15,17 @@ Interface::~Interface() {
 
 //Functions
 void Interface::addButton(const sf::Texture* texture, const sf::Vector2f& pos) {
-	buttons.push_back(Button(texture, pos));
+	interface.push_back(new Button(texture, pos));
 }
 
 void Interface::updateButtons(const sf::Vector2f& mousePos){
-	for (auto& i : buttons)
-		i.update(mousePos);
+	for (auto *i : interface)
+		i->update(mousePos);
 }
 
-void Interface::renderButtons(sf::RenderTarget* target){
-	for (auto& i : buttons)
-		i.render(target);
+void Interface::renderInterfaceComponents(sf::RenderTarget* target){
+	for (auto *i : interface)
+		i->render(target);
 }
 
 

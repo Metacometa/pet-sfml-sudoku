@@ -1,10 +1,8 @@
 #include "Button.h"
 
 //Constructor / Destructor
-Button::Button(const sf::Texture* texture, const sf::Vector2f& pos) {
-	this->sprite.setTexture(*texture);
-	this->sprite.setPosition(pos);
-	this->pos = pos;
+Button::Button(const sf::Texture* texture, const sf::Vector2f& pos) : InterfaceComponent(texture, pos) {
+
 }
 
 Button::~Button(){
@@ -49,18 +47,8 @@ void Button::shrink(const sf::Vector2f& mousePos) {
 	}
 }
 
-//Getters
-const sf::Sprite Button::getSprite() const {
-	return this->sprite;
-}
-
 //Functions
-void Button::update(const sf::Vector2f &mousePos) {
+void Button::update(const sf::Vector2f& mousePos) {
 	this->shrink(mousePos);
 }
-
-void Button::render(sf::RenderTarget* target) {
-	target->draw(this->sprite);
-}
-
 
