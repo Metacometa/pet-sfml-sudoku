@@ -1,5 +1,5 @@
 #pragma once
-#include "Screen.h"
+#include "Interface.h"
 
 const int SCREENS = 3;
 
@@ -15,19 +15,23 @@ class Game {
 	sf::VideoMode videoMode;
 	sf::Event ev;
 
-	//Screen
-	enum class screenState {MENU, LOAD, GAME};  
-	screenState currentScreen;
+	//Mouse positions
+	sf::Vector2i mousePosWindow;
+	sf::Vector2f mousePosWorld;
+
+	//Interface
+	enum class interfaceState {MENU, LOAD, GAME};  
+	interfaceState currentInterface;
 
 	//Resources
 	std::map<std::string, sf::Texture*> textures;
-	std::vector<Screen*> menu;
+	std::vector<Interface> menu;
 	
 	//Private functions
 	void initVariables();
 	void initWindow();
 	void initTextures();
-	void initScreens();
+	void initInterface();
 public:
 	//Constructor / Destructor
 	Game();
@@ -37,13 +41,15 @@ public:
 	const bool isRunning() const;
 
 	//Getters
-	const screenState getScreenState() const;
+	const interfaceState getScreenState() const;
 
 	//Setters
-	void setScreenState(screenState state);
+	void setScreenState(interfaceState state);
 
 	//Functions
     void pollEvents();
+	void updateMousePositions();
+	void updateInterface();
 	void update();
 	void render();
 };

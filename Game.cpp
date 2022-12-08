@@ -3,16 +3,17 @@
 //Private functions
 void Game::initVariables() {
 	this->window = nullptr;
-
 }
 
 void Game::initWindow() {
+	//set screen properties
 	this->videoMode.height = 800;
 	this->videoMode.width = 800;
 	this->window = new sf::RenderWindow(videoMode, "Sudoku");
 }
 
 void Game::initTextures() {
+	//load our textures to map
 	this->textures["NEW"] = new sf::Texture();
 	this->textures["NEW"]->loadFromFile("assets/new_game.png");
 
@@ -23,31 +24,40 @@ void Game::initTextures() {
 	this->textures["EXIT"]->loadFromFile("assets/exit.png");
 }
 
-void Game::initScreens() {
-	this->currentScreen = screenState::MENU; 
-	this->menu.push_back(new Screen());
-	this->menu[(int)screenState::MENU]->addButton(this->textures["NEW"]);
+void Game::initInterface() {
+	//remember current state of screen
+	this->currentInterface = interfaceState::MENU; 
 
-	this->menu.push_back(new Screen());
+	//create starting screen
+	this->menu.push_back(Interface());
+	this->menu[(int)interfaceState::MENU].addButton(this->textures["NEW"], NEW_GAME_POS);
+	this->menu[(int)interfaceState::MENU].addButton(this->textures["LOAD"], LOAD_GAME_POS);
+	this->menu[(int)interfaceState::MENU].addButton(this->textures["EXIT"], EXIT_POS);
 
-	this->menu.push_back(new Screen());
+	//this->menu.push_back(Interface());
+
+	//this->menu.push_back(Interface());
 }
 
 //Constructor / Destructor
 Game::Game() {
-	initVariables();
-	initWindow();
-	initScreens();
+	this->initVariables();
+	this->initWindow();
+	this->initTextures();
+	this->initInterface();
 }
 
 Game::~Game() {
-	//Delete menu
-	for (auto& i : menu)
+	//Delete menu (I decided not to use dynamic memory for menu(class Interface)
+	/*for (auto &i: menu)
 		delete i;
-
+	*/
+		
 	//Delete textures
-	for (auto& i : textures)
-		i.second;
+	for (auto& i : this->textures)
+		delete i.second;
+
+	//Delete window
 	delete this->window;
 }
 
@@ -57,15 +67,16 @@ const bool Game::isRunning() const {
 }
 
 //Getters
-const Game::screenState Game::getScreenState() const {
-	return currentScreen;
+const Game::interfaceState Game::getScreenState() const {
+	return currentInterface;
 }
 
 //Setters
-void Game::setScreenState(screenState state) {
-	this->currentScreen = state;
+void Game::setScreenState(interfaceState state) {
+	this->currentInterface = state;
 }
 
+//Functions
 void Game::pollEvents() {
 	while (this->window->pollEvent(this->ev)) {
 		if (this->ev.type == sf::Event::Closed) {
@@ -74,9 +85,28 @@ void Game::pollEvents() {
 	}
 }
 
-//Functions
+void Game::updateMousePositions() {
+	/*
+		@ return void
+
+		Updates the mouse positions:
+		- Mouse position relative to window (Vector2i)
+	*/
+
+	this->mousePosWindow = sf::Mouse::getPosition(*this->window);
+	this->mousePosWorld = this->window->mapPixelToCoords(mousePosWindow);
+}
+
+void Game::updateInterface() {
+	menu[(int)currentInterface].updateButtons(this->mousePosWorld);
+}
+
 void Game::update() {
-	pollEvents();
+	this->pollEvents();
+
+	this->updateMousePositions();
+
+	this->updateInterface();
 }
 
 void Game::render() {
@@ -87,13 +117,20 @@ void Game::render() {
 		- display frame in window
 		Render the game objects.	
 	*/
+
 	this->window->clear(sf::Color(237,218,192,255));
 
 	//Draw game objects
-	// 
-	Button kek("assets/load_game.png");
-	this->window->draw(kek.getSprite());
-	//this->window->draw();
+	switch (this->currentInterface) {
+		case interfaceState::MENU:
+			//render buttons of starting menu
+			menu[(int)interfaceState::MENU].renderButtons(this->window);
+			break;
+		case interfaceState::LOAD:
+			break;
+		case interfaceState::GAME:
+			break;
+	}
 
 	this->window->display();
 }

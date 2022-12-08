@@ -21,7 +21,7 @@
     <ClCompile Include="Game.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Screen.cpp">
+    <ClCompile Include="Interface.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
@@ -32,10 +32,13 @@
     <ClInclude Include="Game.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Screen.h">
+    <ClInclude Include="Interface.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Properties.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

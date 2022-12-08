@@ -154,12 +154,13 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Screen.cpp" />
+    <ClCompile Include="Interface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Screen.h" />
+    <ClInclude Include="Properties.h" />
+    <ClInclude Include="Interface.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
