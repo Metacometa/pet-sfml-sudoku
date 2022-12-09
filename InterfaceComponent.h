@@ -1,6 +1,8 @@
 #pragma once
 #include "Properties.h"
 
+//Parent class for images and buttons components of interface.
+
 class InterfaceComponent {
 protected:
 	//Resources
@@ -8,7 +10,6 @@ protected:
 
 	//Variables
 	sf::Vector2f pos;
-
 public:
 	//Constructor / Destructor
 	InterfaceComponent(const sf::Texture* texture, const sf::Vector2f& pos);

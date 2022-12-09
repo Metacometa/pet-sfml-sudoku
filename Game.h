@@ -1,11 +1,9 @@
 #pragma once
 #include "Interface.h"
 
-const int SCREENS = 3;
-
 /*
 	Class that acts as the game engine.
-	Wrapper class;
+	Wrapper class.
 */
 
 class Game {	
@@ -39,12 +37,12 @@ public:
 
 	//Accessors
 	const bool isRunning() const;
+	const int IntInterfaceState() const;
 
 	//Getters
-	const interfaceState getScreenState() const;
 
 	//Setters
-	void setScreenState(interfaceState state);
+	void setInterfaceState(interfaceState state);
 
 	//Functions
     void pollEvents();

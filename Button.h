@@ -1,6 +1,8 @@
 #include "Image.h"
 
-class Button : public InterfaceComponent{
+//Children class that has own features for clicking and pointing
+
+class Button : public InterfaceComponent {
 	//Private functions
 	void shrink(const sf::Vector2f& mousePos);
 public:

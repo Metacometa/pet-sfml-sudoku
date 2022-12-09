@@ -1,6 +1,8 @@
 #pragma once
 #include "InterfaceComponent.h"
 
+//Children class without special features
+
 class Image : public InterfaceComponent {
 public:
 	//Constructor / Destructor

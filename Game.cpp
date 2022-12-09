@@ -52,11 +52,6 @@ Game::Game() {
 }
 
 Game::~Game() {
-	//Delete menu (I decided not to use dynamic memory for menu(class Interface)
-	/*for (auto &i: menu)
-		delete i;
-	*/
-		
 	//Delete textures
 	for (auto &i : this->textures)
 		delete i.second;
@@ -70,13 +65,14 @@ const bool Game::isRunning() const {
 	return this->window->isOpen();
 }
 
-//Getters
-const Game::interfaceState Game::getScreenState() const {
-	return currentInterface;
+const int Game::IntInterfaceState() const {
+	return (int)this->currentInterface;
 }
 
+//Getters
+
 //Setters
-void Game::setScreenState(interfaceState state) {
+void Game::setInterfaceState(interfaceState state) {
 	this->currentInterface = state;
 }
 
@@ -98,11 +94,11 @@ void Game::updateMousePositions() {
 	*/
 
 	this->mousePosWindow = sf::Mouse::getPosition(*this->window);
-	this->mousePosWorld = this->window->mapPixelToCoords(mousePosWindow);
+	this->mousePosWorld = this->window->mapPixelToCoords(this->mousePosWindow);
 }
 
 void Game::updateInterface() {
-	menu[(int)currentInterface].updateButtons(this->mousePosWorld);
+	this->menu[IntInterfaceState()].updateButtons(this->mousePosWorld);
 }
 
 void Game::update() {
@@ -128,7 +124,7 @@ void Game::render() {
 	switch (this->currentInterface) {
 		case interfaceState::MENU:
 			//render buttons of starting menu
-			menu[(int)interfaceState::MENU].renderInterfaceComponents(this->window);
+			this->menu[IntInterfaceState()].renderInterfaceComponents(this->window);
 			break;
 		case interfaceState::LOAD:
 			break;

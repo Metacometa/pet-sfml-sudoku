@@ -13,7 +13,7 @@ void Interface::addButton(const sf::Texture* texture, const sf::Vector2f& pos) {
 	interface.push_back(new Button(texture, pos));
 }
 
-void Interface::addImage(const sf::Texture* texture, const sf::Vector2f& pos){
+void Interface::addImage(const sf::Texture* texture, const sf::Vector2f& pos) {
 	interface.push_back(new Image(texture, pos));
 }
 

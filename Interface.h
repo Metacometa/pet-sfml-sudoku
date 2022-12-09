@@ -1,6 +1,12 @@
 #pragma once
 #include "Button.h"
 
+/*
+	Class that acts as the game interface
+	It contains all manipulations with buttons, images and game_field.
+	Wrapper class.
+*/
+
 class Interface {
 	//Resources
 	std::vector<InterfaceComponent*> interface;

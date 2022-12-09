@@ -17,8 +17,7 @@ const sf::Sprite InterfaceComponent::getSprite() const {
 //Setters
 
 //Accessors
-const bool InterfaceComponent::isPointed(const sf::Vector2f& mousePos) const
-{
+const bool InterfaceComponent::isPointed(const sf::Vector2f& mousePos) const {
 	return this->sprite.getGlobalBounds().contains(mousePos);
 }
 
