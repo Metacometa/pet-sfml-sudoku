@@ -12,50 +12,37 @@ void Game::initWindow() {
 	this->window = new sf::RenderWindow(videoMode, "Sudoku");
 }
 
-void Game::initTextures() {
-	//load our textures to map
-	this->textures["TITLE"] = new sf::Texture();
-	this->textures["TITLE"]->loadFromFile("assets/sudoku.png");
-
-	this->textures["NEW"] = new sf::Texture();
-	this->textures["NEW"]->loadFromFile("assets/new_game.png");
-
-	this->textures["LOAD"] = new sf::Texture();
-	this->textures["LOAD"]->loadFromFile("assets/load_game.png");
-
-	this->textures["EXIT"] = new sf::Texture();
-	this->textures["EXIT"]->loadFromFile("assets/exit.png");
-}
 
 void Game::initInterface() {
 	//remember current state of screen
+	//interface.cr
+	interface.addPages(INTERFACE_PAGES);
+	/*
 	this->currentInterface = interfaceState::MENU; 
 
 	//create starting screen
-	this->menu.push_back(Interface());
-	this->menu[(int)interfaceState::MENU].addImage(this->textures["TITLE"], TITLE_POS);
-	this->menu[(int)interfaceState::MENU].addButton(this->textures["NEW"], NEW_GAME_POS);
-	this->menu[(int)interfaceState::MENU].addButton(this->textures["LOAD"], LOAD_GAME_POS);
-	this->menu[(int)interfaceState::MENU].addButton(this->textures["EXIT"], EXIT_POS);
+	this->interface.push_back(Interface());
+	this->interface[(int)interfaceState::MENU].addImage(this->textures["TITLE"], TITLE_POS);
+	this->interface[(int)interfaceState::MENU].addButton(this->textures["NEW"], NEW_GAME_POS);
+	this->interface[(int)interfaceState::MENU].addButton(this->textures["LOAD"], LOAD_GAME_POS);
+	this->interface[(int)interfaceState::MENU].addButton(this->textures["EXIT"], EXIT_POS);
+	*/
 
-	//this->menu.push_back(Interface());
 
-	//this->menu.push_back(Interface());
+	//this->interface.push_back(Interface());
+
+	//this->interface.push_back(Interface());
 }
 
 //Constructor / Destructor
 Game::Game() {
 	this->initVariables();
 	this->initWindow();
-	this->initTextures();
+	//this->initTextures();
 	this->initInterface();
 }
 
 Game::~Game() {
-	//Delete textures
-	for (auto &i : this->textures)
-		delete i.second;
-
 	//Delete window
 	delete this->window;
 }
@@ -98,7 +85,8 @@ void Game::updateMousePositions() {
 }
 
 void Game::updateInterface() {
-	this->menu[IntInterfaceState()].updateButtons(this->mousePosWorld);
+	//
+	//this->interface[IntInterfaceState()].updateButtons(this->mousePosWorld);
 }
 
 void Game::update() {
@@ -123,8 +111,8 @@ void Game::render() {
 	//Draw game objects
 	switch (this->currentInterface) {
 		case interfaceState::MENU:
-			//render buttons of starting menu
-			this->menu[IntInterfaceState()].renderInterfaceComponents(this->window);
+			//render buttons of starting interface
+			//this->interface[IntInterfaceState()].renderInterfaceComponents(this->window);
 			break;
 		case interfaceState::LOAD:
 			break;

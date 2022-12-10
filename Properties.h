@@ -14,3 +14,6 @@ const sf::Vector2f EXIT_POS = sf::Vector2f(83, 565);
 //Variable for correct shrinking animation of button
 const float SHRINK_MULTIPLIER = 0.98;
 const float NORMAL_MULTIPLIER = 1;
+
+//Interface
+const int INTERFACE_PAGES = 3;

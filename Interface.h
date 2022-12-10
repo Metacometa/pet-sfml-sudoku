@@ -1,5 +1,5 @@
 #pragma once
-#include "Button.h"
+#include "Page.h"
 
 /*
 	Class that acts as the game interface
@@ -9,13 +9,19 @@
 
 class Interface {
 	//Resources
-	std::vector<InterfaceComponent*> interface;
+	std::map<std::string, sf::Texture*> textures;
+	std::vector<Page*> pages;
+
+	//Private functions
+	void initTextures();
 public:
 	//Constructor / Destructor
 	Interface();	
 	virtual ~Interface();
 
 	//Functions
+	void addPages(int numberOfPages);
+
 	void addButton(const sf::Texture* texture, const sf::Vector2f& pos);
 	void addImage(const sf::Texture* texture, const sf::Vector2f& pos);
 

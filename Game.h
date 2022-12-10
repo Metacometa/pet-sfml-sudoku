@@ -22,13 +22,12 @@ class Game {
 	interfaceState currentInterface;
 
 	//Resources
-	std::map<std::string, sf::Texture*> textures;
-	std::vector<Interface> menu;
+	Interface interface;
 	
 	//Private functions
 	void initVariables();
 	void initWindow();
-	void initTextures();
+	//void initTextures();
 	void initInterface();
 public:
 	//Constructor / Destructor
