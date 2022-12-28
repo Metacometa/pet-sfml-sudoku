@@ -8,25 +8,23 @@
 */
 
 class Interface {
+private:
 	//Resources
-	std::map<std::string, sf::Texture*> textures;
+	std::map<InterfaceBlocks, sf::Texture*> textures;
 	std::vector<Page*> pages;
 
+	InterfacePages page;
+protected:
 	//Private functions
 	void initTextures();
+	void initPages();
 public:
 	//Constructor / Destructor
-	Interface();	
+	Interface(InterfacePages tempPage);
 	virtual ~Interface();
 
 	//Functions
-	void addPages(int numberOfPages);
-
-	void addButton(const sf::Texture* texture, const sf::Vector2f& pos);
-	void addImage(const sf::Texture* texture, const sf::Vector2f& pos);
-
-	void updateButtons(const sf::Vector2f& mousePos);
-
-	void renderInterfaceComponents(sf::RenderTarget* target);
+	void updatePage(const sf::Vector2f& mousePos);
+	void renderPage(sf::RenderTarget* target);
 };
 

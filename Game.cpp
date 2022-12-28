@@ -12,33 +12,15 @@ void Game::initWindow() {
 	this->window = new sf::RenderWindow(videoMode, "Sudoku");
 }
 
-
 void Game::initInterface() {
-	//remember current state of screen
-	//interface.cr
-	interface.addPages(INTERFACE_PAGES);
-	/*
-	this->currentInterface = interfaceState::MENU; 
-
-	//create starting screen
-	this->interface.push_back(Interface());
-	this->interface[(int)interfaceState::MENU].addImage(this->textures["TITLE"], TITLE_POS);
-	this->interface[(int)interfaceState::MENU].addButton(this->textures["NEW"], NEW_GAME_POS);
-	this->interface[(int)interfaceState::MENU].addButton(this->textures["LOAD"], LOAD_GAME_POS);
-	this->interface[(int)interfaceState::MENU].addButton(this->textures["EXIT"], EXIT_POS);
-	*/
-
-
-	//this->interface.push_back(Interface());
-
-	//this->interface.push_back(Interface());
+	initTextures();
+	initPages();
 }
 
 //Constructor / Destructor
-Game::Game() {
+Game::Game() : Interface(InterfacePages::MENU) {
 	this->initVariables();
 	this->initWindow();
-	//this->initTextures();
 	this->initInterface();
 }
 
@@ -52,16 +34,9 @@ const bool Game::isRunning() const {
 	return this->window->isOpen();
 }
 
-const int Game::IntInterfaceState() const {
-	return (int)this->currentInterface;
-}
-
 //Getters
 
 //Setters
-void Game::setInterfaceState(interfaceState state) {
-	this->currentInterface = state;
-}
 
 //Functions
 void Game::pollEvents() {
@@ -85,8 +60,7 @@ void Game::updateMousePositions() {
 }
 
 void Game::updateInterface() {
-	//
-	//this->interface[IntInterfaceState()].updateButtons(this->mousePosWorld);
+	updatePage(this->mousePosWorld);
 }
 
 void Game::update() {
@@ -109,16 +83,8 @@ void Game::render() {
 	this->window->clear(sf::Color(237,218,192,255));
 
 	//Draw game objects
-	switch (this->currentInterface) {
-		case interfaceState::MENU:
-			//render buttons of starting interface
-			//this->interface[IntInterfaceState()].renderInterfaceComponents(this->window);
-			break;
-		case interfaceState::LOAD:
-			break;
-		case interfaceState::GAME:
-			break;
-	}
+
+	renderPage(this->window);
 
 	this->window->display();
 }

@@ -17,3 +17,6 @@ const float NORMAL_MULTIPLIER = 1;
 
 //Interface
 const int INTERFACE_PAGES = 3;
+
+enum InterfacePages { MENU, GAME };
+enum InterfaceBlocks { TITLE, NEW_GAME, LOAD_GAME, EXIT };

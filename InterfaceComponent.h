@@ -4,12 +4,15 @@
 //Parent class for images and buttons components of interface.
 
 class InterfaceComponent {
+
 protected:
 	//Resources
 	sf::Sprite sprite;
 
 	//Variables
 	sf::Vector2f pos;
+
+	InterfaceBlocks name;
 public:
 	//Constructor / Destructor
 	InterfaceComponent(const sf::Texture* texture, const sf::Vector2f& pos);

@@ -5,6 +5,7 @@ InterfaceComponent::InterfaceComponent(const sf::Texture* texture, const sf::Vec
 	this->sprite.setTexture(*texture);
 	this->sprite.setPosition(pos);
 	this->pos = pos;
+	name = InterfaceBlocks::LOAD_GAME;
 }
 
 InterfaceComponent::~InterfaceComponent() {}

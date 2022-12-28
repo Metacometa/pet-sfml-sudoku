@@ -6,7 +6,7 @@
 	Wrapper class.
 */
 
-class Game {	
+class Game : public Interface {	
 	//Variables
 	//Window
 	sf::RenderWindow* window;
@@ -17,17 +17,11 @@ class Game {
 	sf::Vector2i mousePosWindow;
 	sf::Vector2f mousePosWorld;
 
-	//Interface
-	enum class interfaceState {MENU, LOAD, GAME};  
-	interfaceState currentInterface;
-
 	//Resources
-	Interface interface;
 	
 	//Private functions
 	void initVariables();
 	void initWindow();
-	//void initTextures();
 	void initInterface();
 public:
 	//Constructor / Destructor
@@ -36,12 +30,10 @@ public:
 
 	//Accessors
 	const bool isRunning() const;
-	const int IntInterfaceState() const;
 
 	//Getters
 
 	//Setters
-	void setInterfaceState(interfaceState state);
 
 	//Functions
     void pollEvents();
