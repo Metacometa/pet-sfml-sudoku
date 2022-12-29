@@ -42,6 +42,9 @@
     <ClCompile Include="Page.cpp">
       <Filter>Исходные файлы\Interface</Filter>
     </ClCompile>
+    <ClCompile Include="Field.cpp">
+      <Filter>Исходные файлы\Interface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -63,6 +66,9 @@
       <Filter>Файлы заголовков\Interface</Filter>
     </ClInclude>
     <ClInclude Include="Page.h">
+      <Filter>Файлы заголовков\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Field.h">
       <Filter>Файлы заголовков\Interface</Filter>
     </ClInclude>
   </ItemGroup>

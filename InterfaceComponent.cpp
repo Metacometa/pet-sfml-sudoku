@@ -1,6 +1,8 @@
 #include "InterfaceComponent.h"
 
 //Constructor / Destructor
+InterfaceComponent::InterfaceComponent() : name(InterfaceBlock::NONE) {}
+
 InterfaceComponent::InterfaceComponent(const sf::Texture* texture, const sf::Vector2f& pos, InterfaceBlock name) {
 	this->sprite.setTexture(*texture);
 	this->sprite.setPosition(pos);

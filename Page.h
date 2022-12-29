@@ -1,5 +1,5 @@
 #pragma once
-#include "Button.h"
+#include "Field.h"
 
 class Page {
 	std::vector<InterfaceComponent*> interfaceComponents;
@@ -11,9 +11,9 @@ public:
 	//Functions
 	void addButton(const sf::Texture* texture, const sf::Vector2f& pos, InterfaceBlock name);
 	void addImage(const sf::Texture* texture, const sf::Vector2f& pos, InterfaceBlock name);
+	void addField(const sf::Vector2f& pos, InterfaceBlock name);
 
-	void switchPage(const InterfaceBlock& gottenBlock, InterfacePage& page, sf::RenderWindow* window);
-	void updateInterfaceComponents(const sf::Vector2f& mousePos, const bool& isLeftButtonPressed, InterfacePage &page, sf::RenderWindow* window);
+	InterfaceBlock updateInterfaceComponents(const sf::Vector2f& mousePos, const bool& isLeftButtonPressed);
 	void renderInterfaceComponents(sf::RenderTarget* target);
 };
 

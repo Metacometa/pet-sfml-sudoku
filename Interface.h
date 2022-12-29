@@ -25,6 +25,8 @@ public:
 
 	//Functions
 	void updatePage(const sf::Vector2f &mousePos, const bool &isLeftButtonPressed, sf::RenderWindow* window);
+	void switchPage(const InterfaceBlock& gottenBlock, InterfacePage& page, sf::RenderWindow* window);
+
 	void renderPage(sf::RenderTarget* target);
 };
 

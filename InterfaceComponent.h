@@ -14,7 +14,8 @@ protected:
 
 	InterfaceBlock name;
 public:
-	//Constructor / Destructor
+	//Constructors / Destructors
+	InterfaceComponent();
 	InterfaceComponent(const sf::Texture* texture, const sf::Vector2f& pos, InterfaceBlock name);
 	virtual ~InterfaceComponent();
 
