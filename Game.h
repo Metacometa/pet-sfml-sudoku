@@ -17,6 +17,9 @@ class Game : public Interface {
 	sf::Vector2i mousePosWindow;
 	sf::Vector2f mousePosWorld;
 
+	//Player input
+	bool isLeftButtonPressed;
+
 	//Resources
 	
 	//Private functions
@@ -37,8 +40,10 @@ public:
 
 	//Functions
     void pollEvents();
+
 	void updateMousePositions();
-	void updateInterface();
+	void updateInput();
+
 	void update();
 	void render();
 };

@@ -10,21 +10,21 @@
 class Interface {
 private:
 	//Resources
-	std::map<InterfaceBlocks, sf::Texture*> textures;
+	std::map<InterfaceBlock, sf::Texture*> textures;
 	std::vector<Page*> pages;
 
-	InterfacePages page;
+	InterfacePage page;
 protected:
 	//Private functions
 	void initTextures();
 	void initPages();
 public:
 	//Constructor / Destructor
-	Interface(InterfacePages tempPage);
+	Interface(InterfacePage tempPage);
 	virtual ~Interface();
 
 	//Functions
-	void updatePage(const sf::Vector2f& mousePos);
+	void updatePage(const sf::Vector2f &mousePos, const bool &isLeftButtonPressed, sf::RenderWindow* window);
 	void renderPage(sf::RenderTarget* target);
 };
 

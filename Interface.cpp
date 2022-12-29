@@ -2,29 +2,60 @@
 
 //Private functions
 void Interface::initTextures() {
-	this->textures[InterfaceBlocks::TITLE] = new sf::Texture();
-	this->textures[InterfaceBlocks::TITLE]->loadFromFile("assets/sudoku.png");
+	this->textures[InterfaceBlock::TITLE] = new sf::Texture();
+	this->textures[InterfaceBlock::TITLE]->loadFromFile("assets/menu/sudoku.png");
 		
-	this->textures[InterfaceBlocks::NEW_GAME] = new sf::Texture();
-	this->textures[InterfaceBlocks::NEW_GAME]->loadFromFile("assets/new_game.png");
+	this->textures[InterfaceBlock::NEW_GAME] = new sf::Texture();
+	this->textures[InterfaceBlock::NEW_GAME]->loadFromFile("assets/menu/new_game.png");
 
-	this->textures[InterfaceBlocks::LOAD_GAME] = new sf::Texture();
-	this->textures[InterfaceBlocks::LOAD_GAME]->loadFromFile("assets/load_game.png");
+	this->textures[InterfaceBlock::LOAD_GAME] = new sf::Texture();
+	this->textures[InterfaceBlock::LOAD_GAME]->loadFromFile("assets/menu/load_game.png");
 
-	this->textures[InterfaceBlocks::EXIT] = new sf::Texture();
-	this->textures[InterfaceBlocks::EXIT]->loadFromFile("assets/exit.png");
+	this->textures[InterfaceBlock::EXIT] = new sf::Texture();
+	this->textures[InterfaceBlock::EXIT]->loadFromFile("assets/menu/exit.png");
+
+	this->textures[InterfaceBlock::BACK] = new sf::Texture();
+	this->textures[InterfaceBlock::BACK]->loadFromFile("assets/game/back.png");
+
+	this->textures[InterfaceBlock::RESTART] = new sf::Texture();
+	this->textures[InterfaceBlock::RESTART]->loadFromFile("assets/game/restart.png");
+
+	this->textures[InterfaceBlock::SAVE] = new sf::Texture();
+	this->textures[InterfaceBlock::SAVE]->loadFromFile("assets/game/save.png");
+
+	this->textures[InterfaceBlock::FIELD] = new sf::Texture();
+	this->textures[InterfaceBlock::FIELD]->loadFromFile("assets/game/field.png");
+
+	this->textures[InterfaceBlock::TAKEBACK] = new sf::Texture();
+	this->textures[InterfaceBlock::TAKEBACK]->loadFromFile("assets/game/takeback.png");
+
+	this->textures[InterfaceBlock::ERASE] = new sf::Texture();
+	this->textures[InterfaceBlock::ERASE]->loadFromFile("assets/game/erase.png");
+
+	this->textures[InterfaceBlock::HINT] = new sf::Texture();
+	this->textures[InterfaceBlock::HINT]->loadFromFile("assets/game/hint.png");
 }
 
 void Interface::initPages() {
+	//Initializing MENU page
 	this->pages.push_back(new Page());
-	this->pages[InterfacePages::MENU]->addImage(this->textures[InterfaceBlocks::TITLE], TITLE_POS);
-	this->pages[InterfacePages::MENU]->addButton(this->textures[InterfaceBlocks::NEW_GAME], NEW_GAME_POS);
-	this->pages[InterfacePages::MENU]->addButton(this->textures[InterfaceBlocks::LOAD_GAME], LOAD_GAME_POS);
-	this->pages[InterfacePages::MENU]->addButton(this->textures[InterfaceBlocks::EXIT], EXIT_POS);
+	this->pages[InterfacePage::MENU]->addImage(this->textures[InterfaceBlock::TITLE], TITLE_POS, InterfaceBlock::TITLE);
+	this->pages[InterfacePage::MENU]->addButton(this->textures[InterfaceBlock::NEW_GAME], NEW_GAME_POS, InterfaceBlock::NEW_GAME);
+	this->pages[InterfacePage::MENU]->addButton(this->textures[InterfaceBlock::LOAD_GAME], LOAD_GAME_POS, InterfaceBlock::LOAD_GAME);
+	this->pages[InterfacePage::MENU]->addButton(this->textures[InterfaceBlock::EXIT], EXIT_POS, InterfaceBlock::EXIT);
+
+	this->pages.push_back(new Page());
+	this->pages[InterfacePage::GAME]->addButton(this->textures[InterfaceBlock::BACK], BACK_POS, InterfaceBlock::BACK);
+	this->pages[InterfacePage::GAME]->addButton(this->textures[InterfaceBlock::RESTART], RESTART_POS, InterfaceBlock::RESTART);
+	this->pages[InterfacePage::GAME]->addButton(this->textures[InterfaceBlock::SAVE], SAVE_POS, InterfaceBlock::SAVE);
+	this->pages[InterfacePage::GAME]->addImage(this->textures[InterfaceBlock::FIELD], FIELD_POS, InterfaceBlock::FIELD);
+	this->pages[InterfacePage::GAME]->addButton(this->textures[InterfaceBlock::TAKEBACK], TAKEBACK_POS, InterfaceBlock::TAKEBACK);
+	this->pages[InterfacePage::GAME]->addButton(this->textures[InterfaceBlock::ERASE], ERASE_POS, InterfaceBlock::ERASE);
+	this->pages[InterfacePage::GAME]->addButton(this->textures[InterfaceBlock::HINT], HINT_POS, InterfaceBlock::HINT);
 }
 
 //Constructor / Destructor
-Interface::Interface(InterfacePages tempPage) : page(tempPage) {
+Interface::Interface(InterfacePage tempPage) : page(tempPage) {
 	std::cout << tempPage << std::endl;
 }
 
@@ -39,8 +70,8 @@ Interface::~Interface() {
 }
 
 //Functions
-void Interface::updatePage(const sf::Vector2f& mousePos) {
-	this->pages[page]->updateInterfaceComponents(mousePos);
+void Interface::updatePage(const sf::Vector2f& mousePos, const bool &isLeftButtonPressed, sf::RenderWindow* window) {
+	this->pages[page]->updateInterfaceComponents(mousePos, isLeftButtonPressed, this->page, window);
 }
 
 void Interface::renderPage(sf::RenderTarget* target) {

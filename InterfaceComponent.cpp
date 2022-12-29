@@ -1,11 +1,11 @@
 #include "InterfaceComponent.h"
 
 //Constructor / Destructor
-InterfaceComponent::InterfaceComponent(const sf::Texture* texture, const sf::Vector2f& pos) {
+InterfaceComponent::InterfaceComponent(const sf::Texture* texture, const sf::Vector2f& pos, InterfaceBlock name) {
 	this->sprite.setTexture(*texture);
 	this->sprite.setPosition(pos);
 	this->pos = pos;
-	name = InterfaceBlocks::LOAD_GAME;
+	this->name = name;
 }
 
 InterfaceComponent::~InterfaceComponent() {}
@@ -13,6 +13,10 @@ InterfaceComponent::~InterfaceComponent() {}
 //Getters
 const sf::Sprite InterfaceComponent::getSprite() const {
 	return this->sprite;
+}
+
+const InterfaceBlock InterfaceComponent::getInterfaceBlock() const {
+	return this->name;
 }
 
 //Setters

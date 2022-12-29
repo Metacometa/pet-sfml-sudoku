@@ -4,10 +4,11 @@
 
 class Button : public InterfaceComponent {
 	//Private functions
-	void shrink(const sf::Vector2f& mousePos);
+	void shrink();
+	void unshrink();
 public:
 	//Constructor / Destructor
-	Button(const sf::Texture* texture, const sf::Vector2f& pos);
+	Button(const sf::Texture* texture, const sf::Vector2f& pos, InterfaceBlock name);
 	virtual ~Button();
 
 	//Functions

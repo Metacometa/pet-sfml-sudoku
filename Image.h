@@ -6,7 +6,7 @@
 class Image : public InterfaceComponent {
 public:
 	//Constructor / Destructor
-	Image(const sf::Texture* texture, const sf::Vector2f& pos);
+	Image(const sf::Texture* texture, const sf::Vector2f& pos, InterfaceBlock name);
 	virtual ~Image();
 };
 

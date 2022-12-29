@@ -3,6 +3,7 @@
 //Private functions
 void Game::initVariables() {
 	this->window = nullptr;
+	isLeftButtonPressed = false;
 }
 
 void Game::initWindow() {
@@ -18,14 +19,13 @@ void Game::initInterface() {
 }
 
 //Constructor / Destructor
-Game::Game() : Interface(InterfacePages::MENU) {
+Game::Game() : Interface(InterfacePage::MENU) {
 	this->initVariables();
 	this->initWindow();
 	this->initInterface();
 }
 
 Game::~Game() {
-	//Delete window
 	delete this->window;
 }
 
@@ -59,16 +59,22 @@ void Game::updateMousePositions() {
 	this->mousePosWorld = this->window->mapPixelToCoords(this->mousePosWindow);
 }
 
-void Game::updateInterface() {
-	updatePage(this->mousePosWorld);
+void Game::updateInput() {
+	isLeftButtonPressed = false;
+	if (this->ev.type == sf::Event::MouseButtonPressed) {
+		if (ev.mouseButton.button == sf::Mouse::Left) {
+			isLeftButtonPressed = true;
+		}
+	}
 }
 
 void Game::update() {
 	this->pollEvents();
 
 	this->updateMousePositions();
+	this->updateInput();
 
-	this->updateInterface();
+	this->updatePage(this->mousePosWorld, isLeftButtonPressed, this->window);
 }
 
 void Game::render() {

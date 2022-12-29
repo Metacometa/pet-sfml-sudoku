@@ -12,14 +12,16 @@ protected:
 	//Variables
 	sf::Vector2f pos;
 
-	InterfaceBlocks name;
+	InterfaceBlock name;
 public:
 	//Constructor / Destructor
-	InterfaceComponent(const sf::Texture* texture, const sf::Vector2f& pos);
+	InterfaceComponent(const sf::Texture* texture, const sf::Vector2f& pos, InterfaceBlock name);
 	virtual ~InterfaceComponent();
 
 	//Getters
 	const sf::Sprite getSprite() const;
+
+	const InterfaceBlock getInterfaceBlock() const;
 
 	//Setters
 
