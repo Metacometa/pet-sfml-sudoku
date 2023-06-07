@@ -1,32 +1,39 @@
 #include "Game.h"
 
 //Private functions
-void Game::initVariables() {
+void Game::initVariables() 
+{
 }
 
-void Game::initWindow() {
+void Game::initWindow() 
+{
 	//set screen properties
 	this->videoMode.height = 800;
 	this->videoMode.width = 800;
 	this->window = std::make_shared<sf::RenderWindow>(videoMode, "Sudoku");
+
 }
 
-void Game::initInterface() {
-	gui = new GUI;
+void Game::initInterface() 
+{
+	gui = new GUI(window);
 }
 
 //Constructor / Destructor
-Game::Game() {
-	this->initInterface();
+Game::Game() 
+{
 	this->initWindow();
+	this->initInterface();
 }
 
-Game::~Game() {
+Game::~Game() 
+{
 	//delete this->window;
 }
 
 //Accessors
-const bool Game::isRunning() const {
+const bool Game::isRunning() const 
+{
 	return this->window->isOpen();
 }
 
@@ -35,14 +42,21 @@ sf::RenderWindow* Game::getWindow() const
 	return this->window.get();
 }
 
+sf::Vector2f Game::getMousePos() const
+{
+	return mousePosWorld;
+}
+
 //Getters
 
 //Setters
 
 //Functions
 void Game::pollEvents() {
-	while (this->window->pollEvent(this->ev)) {
-		if (this->ev.type == sf::Event::Closed) {
+	while (this->window->pollEvent(this->ev)) 
+	{
+		if (this->ev.type == sf::Event::Closed) 
+		{
 			this->window->close();
 		}
 	}
@@ -62,20 +76,27 @@ void Game::updateMousePositions() {
 
 void Game::updateInput() {
 	isLeftButtonPressed = false;
-	if (this->ev.type == sf::Event::MouseButtonPressed) {
-		if (ev.mouseButton.button == sf::Mouse::Left) {
+	if (this->ev.type == sf::Event::MouseButtonPressed) 
+	{
+		if (ev.mouseButton.button == sf::Mouse::Left) 
+		{
 			isLeftButtonPressed = true;
 		}
 	}
 }
 
-void Game::update() {
+void Game::update(const sf::Vector2f& mousePos) {
 	this->pollEvents();
 
 	this->updateMousePositions();
 	this->updateInput();
 
-	gui->update();
+	gui->update(mousePos);
+
+	if (isLeftButtonPressed) 
+	{
+		gui->click(mousePos);
+	}
 }
 
 void Game::render(sf::RenderTarget* target) {

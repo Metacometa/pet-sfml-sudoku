@@ -44,6 +44,8 @@ public:
 
 	//Getters
 	sf::RenderWindow* getWindow() const;
+	sf::Vector2f getMousePos() const;
+
 	//Setters
 
 	//Functions
@@ -52,7 +54,7 @@ public:
 	void updateMousePositions();
 	void updateInput();
 
-	void update();
+	void update(const sf::Vector2f& mousePos);
 	void render(sf::RenderTarget* target);
 };
 

@@ -1,23 +1,27 @@
 #pragma once
 
-#include <list>
+#include <unordered_map>
 
 #include "Properties.h"
 
 #include "UIComponent.h"
-#include "StartScene.h"
+#include "MenuScene.h"
+#include "GameScene.h"
 
-class GUI : public IRenderable, public IUpdateable
+class GUI : public IRenderable, public IUpdateable, public IClickable
 {
-	std::list<std::shared_ptr<Scene>> scenes;
-	std::list<std::weak_ptr<IRenderable>> renderableScenes;
-	std::list<std::weak_ptr<IUpdateable>> updateableScenes;
+	std::unordered_map<std::string, std::shared_ptr<Scene>> scenes;
+
+	std::weak_ptr<Scene> scene;
 
 public:
-	GUI();
+	GUI(std::shared_ptr<sf::RenderWindow> &window);
 	virtual ~GUI();
 
-	void update();
+	void update(const sf::Vector2f& mousePos);
 	void render(sf::RenderTarget* target);
+	void click(const sf::Vector2f& mousePos);
+
+	void setGameScene();
 };
 

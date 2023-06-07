@@ -7,7 +7,7 @@ int main() {
     //Game loop
     while (game.isRunning()) {
         //Update
-        game.update();
+        game.update(game.getMousePos());
         //Render 
         game.render(game.getWindow());
     }

@@ -7,6 +7,15 @@ UIComponent::UIComponent(const std::shared_ptr<sf::Texture> &texture, const sf::
 	this->pos = pos;
 }
 
+void UIComponent::render(sf::RenderTarget* target) {
+	target->draw(this->sprite);
+}
+
+bool UIComponent::isPointed(const sf::Vector2f& mousePos)
+{
+	return this->sprite.getGlobalBounds().contains(mousePos);
+}
+
 UIComponent::~UIComponent()
 {
 }

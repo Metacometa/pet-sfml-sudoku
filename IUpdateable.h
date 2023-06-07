@@ -1,7 +1,9 @@
 #pragma once
+#include "Properties.h"
+
 class IUpdateable
 {
 public:
-	virtual void update() = 0;
+	virtual void update(const sf::Vector2f& mousePos) = 0;
 };
 
