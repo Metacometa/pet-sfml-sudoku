@@ -152,23 +152,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
-    <ClCompile Include="Field.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Image.cpp" />
-    <ClCompile Include="InterfaceComponent.cpp" />
+    <ClCompile Include="GUI.cpp" />
+    <ClCompile Include="IRenderable.cpp" />
+    <ClCompile Include="IUpdateable.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Interface.cpp" />
-    <ClCompile Include="Page.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="StartScene.cpp" />
+    <ClCompile Include="UIComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
-    <ClInclude Include="Field.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Image.h" />
-    <ClInclude Include="InterfaceComponent.h" />
-    <ClInclude Include="Page.h" />
+    <ClInclude Include="GUI.h" />
+    <ClInclude Include="IRenderable.h" />
+    <ClInclude Include="IUpdateable.h" />
     <ClInclude Include="Properties.h" />
-    <ClInclude Include="Interface.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="StartScene.h" />
+    <ClInclude Include="UIComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

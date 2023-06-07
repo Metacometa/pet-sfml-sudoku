@@ -4,9 +4,11 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <memory>
 
 //Positions of interface's components
 //menu
+
 const sf::Vector2f TITLE_POS = sf::Vector2f(186, 65);
 const sf::Vector2f NEW_GAME_POS = sf::Vector2f(83, 198);
 const sf::Vector2f LOAD_GAME_POS = sf::Vector2f(83, 382);

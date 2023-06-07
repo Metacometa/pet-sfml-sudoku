@@ -2,36 +2,37 @@
 
 //Private functions
 void Game::initVariables() {
-	this->window = nullptr;
-	isLeftButtonPressed = false;
 }
 
 void Game::initWindow() {
 	//set screen properties
 	this->videoMode.height = 800;
 	this->videoMode.width = 800;
-	this->window = new sf::RenderWindow(videoMode, "Sudoku");
+	this->window = std::make_shared<sf::RenderWindow>(videoMode, "Sudoku");
 }
 
 void Game::initInterface() {
-	initTextures();
-	initPages();
+	gui = new GUI;
 }
 
 //Constructor / Destructor
-Game::Game() : Interface(InterfacePage::MENU) {
-	this->initVariables();
-	this->initWindow();
+Game::Game() {
 	this->initInterface();
+	this->initWindow();
 }
 
 Game::~Game() {
-	delete this->window;
+	//delete this->window;
 }
 
 //Accessors
 const bool Game::isRunning() const {
 	return this->window->isOpen();
+}
+
+sf::RenderWindow* Game::getWindow() const
+{
+	return this->window.get();
 }
 
 //Getters
@@ -74,10 +75,10 @@ void Game::update() {
 	this->updateMousePositions();
 	this->updateInput();
 
-	this->updatePage(this->mousePosWorld, isLeftButtonPressed, this->window);
+	gui->update();
 }
 
-void Game::render() {
+void Game::render(sf::RenderTarget* target) {
 	/*
 		@return void
 		- clear old frame
@@ -89,8 +90,7 @@ void Game::render() {
 	this->window->clear(sf::Color(237,218,192,255));
 
 	//Draw game objects
-
-	renderPage(this->window);
+	gui->render(this->window.get());
 
 	this->window->display();
 }

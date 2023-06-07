@@ -1,15 +1,22 @@
 #pragma once
-#include "Interface.h"
+
+#include "Properties.h"
+
+#include "GUI.h"
+#include "IRenderable.h"
+#include "IUpdateable.h"
 
 /*
 	Class that acts as the game engine.
 	Wrapper class.
 */
 
-class Game : public Interface {	
+class Game : public IRenderable, public IUpdateable {	
 	//Variables
+	GUI* gui;
+	
 	//Window
-	sf::RenderWindow* window;
+	std::shared_ptr<sf::RenderWindow> window = nullptr;
 	sf::VideoMode videoMode;
 	sf::Event ev;
 
@@ -18,7 +25,7 @@ class Game : public Interface {
 	sf::Vector2f mousePosWorld;
 
 	//Player input
-	bool isLeftButtonPressed;
+	bool isLeftButtonPressed = false;
 
 	//Resources
 	
@@ -26,6 +33,7 @@ class Game : public Interface {
 	void initVariables();
 	void initWindow();
 	void initInterface();
+
 public:
 	//Constructor / Destructor
 	Game();
@@ -35,7 +43,7 @@ public:
 	const bool isRunning() const;
 
 	//Getters
-
+	sf::RenderWindow* getWindow() const;
 	//Setters
 
 	//Functions
@@ -45,6 +53,6 @@ public:
 	void updateInput();
 
 	void update();
-	void render();
+	void render(sf::RenderTarget* target);
 };
 

@@ -1,17 +1,13 @@
-#include "Image.h"
+#pragma once
+#include "UIComponent.h"
 
-//Children class that has own features for clicking and pointing
-
-class Button : public InterfaceComponent {
-	//Private functions
-	void shrink();
-	void unshrink();
+class Button : public UIComponent
+{
 public:
-	//Constructor / Destructor
-	Button(const sf::Texture* texture, const sf::Vector2f& pos, InterfaceBlock name);
+	Button(const std::shared_ptr<sf::Texture> &texture, const sf::Vector2f& pos);
 	virtual ~Button();
 
-	//Functions
-	virtual void update(const sf::Vector2f& mousePos);
+	void render(sf::RenderTarget* target);
+	void update();
 };
 
