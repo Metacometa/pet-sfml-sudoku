@@ -26,6 +26,8 @@ class Game : public IRenderable, public IUpdateable {
 
 	//Player input
 	bool isLeftButtonPressed = false;
+	bool isKeyPressed = false;
+	sf::Keyboard::Key pressedKey = sf::Keyboard::Unknown;
 
 	//Resources
 	

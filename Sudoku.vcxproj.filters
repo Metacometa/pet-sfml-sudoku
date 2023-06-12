@@ -13,11 +13,29 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Исходные файлы\Interface">
+    <Filter Include="Файлы заголовков\Interfaces">
+      <UniqueIdentifier>{fa629620-c606-4f7e-b378-008e6943047d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Configs">
+      <UniqueIdentifier>{7f5b8d70-30a3-4aa5-aba5-1c8273cde285}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GUI">
+      <UniqueIdentifier>{d446e533-432b-460f-905b-a0ec27023804}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Sudoku">
+      <UniqueIdentifier>{10ff2ad9-96f2-4593-8f7b-cd5afa66c545}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GUI\Scenes">
+      <UniqueIdentifier>{b1d583bf-e542-47b7-ae94-db8b8d4114c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\GUI">
       <UniqueIdentifier>{de501ddf-3788-45e0-bd89-13217bbea4f8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков\Interface">
-      <UniqueIdentifier>{fa629620-c606-4f7e-b378-008e6943047d}</UniqueIdentifier>
+    <Filter Include="Исходные файлы\Configs">
+      <UniqueIdentifier>{eb4f6e1c-1cea-4a7d-af60-d607240be2ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\GUI\Scenes">
+      <UniqueIdentifier>{56692ae6-832d-4531-a29b-f27cbfde3dbd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -27,88 +45,97 @@
     <ClCompile Include="Game.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="GUI.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="IRenderable.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="IUpdateable.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="UIComponent.cpp">
+    <ClCompile Include="SudokuEngine.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="GameSceneConfig.cpp">
+      <Filter>Исходные файлы\Configs</Filter>
     </ClCompile>
-    <ClCompile Include="MenuScene.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="GUI.cpp">
+      <Filter>Исходные файлы\GUI</Filter>
     </ClCompile>
     <ClCompile Include="Image.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="IPointable.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="IClickable.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="GameScene.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Исходные файлы\GUI</Filter>
     </ClCompile>
     <ClCompile Include="MenuSceneConfig.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Configs</Filter>
+    </ClCompile>
+    <ClCompile Include="UIComponent.cpp">
+      <Filter>Исходные файлы\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>Исходные файлы\GUI\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuScene.cpp">
+      <Filter>Исходные файлы\GUI\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="GameField.cpp">
+      <Filter>Исходные файлы\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Properties.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="GUI.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="IClickable.h">
+      <Filter>Файлы заголовков\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="IRenderable.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="IUpdateable.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="UIComponent.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuScene.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuSceneConfig.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="UIComponentInfo.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Image.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="IPointable.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="IClickable.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="IUpdateable.h">
+      <Filter>Файлы заголовков\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Файлы заголовков\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Файлы заголовков\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Properties.h">
+      <Filter>Файлы заголовков\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSceneConfig.h">
+      <Filter>Файлы заголовков\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuSceneConfig.h">
+      <Filter>Файлы заголовков\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="UIComponent.h">
+      <Filter>Файлы заголовков\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIComponentInfo.h">
+      <Filter>Файлы заголовков\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="SudokuEngine.h">
+      <Filter>Файлы заголовков\Sudoku</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>Файлы заголовков\GUI</Filter>
     </ClInclude>
     <ClInclude Include="GameScene.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\GUI\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScene.h">
+      <Filter>Файлы заголовков\GUI\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="GameField.h">
+      <Filter>Файлы заголовков\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Файлы заголовков\GUI\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="IPressable.h">
+      <Filter>Файлы заголовков\Interfaces</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

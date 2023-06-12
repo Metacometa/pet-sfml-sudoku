@@ -16,3 +16,7 @@ void Image::click(const sf::Vector2f& mousePos)
 {
 }
 
+void Image::press(const sf::Keyboard::Key &key)
+{
+}
+

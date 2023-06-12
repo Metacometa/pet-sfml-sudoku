@@ -55,10 +55,7 @@ sf::Vector2f Game::getMousePos() const
 void Game::pollEvents() {
 	while (this->window->pollEvent(this->ev)) 
 	{
-		if (this->ev.type == sf::Event::Closed) 
-		{
-			this->window->close();
-		}
+		updateInput();
 	}
 }
 
@@ -75,13 +72,25 @@ void Game::updateMousePositions() {
 }
 
 void Game::updateInput() {
-	isLeftButtonPressed = false;
-	if (this->ev.type == sf::Event::MouseButtonPressed) 
-	{
-		if (ev.mouseButton.button == sf::Mouse::Left) 
-		{
-			isLeftButtonPressed = true;
-		}
+
+	switch (this->ev.type) {
+		std::cout << "switch" << std::endl;
+		case sf::Event::Closed:
+			this->window->close();
+		case sf::Event::MouseButtonPressed:
+			if (ev.mouseButton.button == sf::Mouse::Left)
+			{
+				isLeftButtonPressed = true;
+			}
+		case sf::Event::KeyPressed:
+			if (ev.key.code == sf::Keyboard::BackSpace) {
+				isKeyPressed = true;
+				pressedKey = ev.key.code;
+			}
+			else if (ev.key.code >= sf::Keyboard::Num1 and ev.key.code <= sf::Keyboard::Num9) {
+				isKeyPressed = true;
+				pressedKey = ev.key.code;
+			}
 	}
 }
 
@@ -89,7 +98,7 @@ void Game::update(const sf::Vector2f& mousePos) {
 	this->pollEvents();
 
 	this->updateMousePositions();
-	this->updateInput();
+	//this->updateInput();
 
 	gui->update(mousePos);
 
@@ -97,6 +106,15 @@ void Game::update(const sf::Vector2f& mousePos) {
 	{
 		gui->click(mousePos);
 	}
+
+	if (isKeyPressed and pressedKey != sf::Keyboard::Unknown)
+	{
+		gui->press(pressedKey);
+	}
+
+	isKeyPressed = false;
+	pressedKey = sf::Keyboard::Unknown;
+	isLeftButtonPressed = false;
 }
 
 void Game::render(sf::RenderTarget* target) {

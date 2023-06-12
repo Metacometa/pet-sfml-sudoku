@@ -1,6 +1,6 @@
 #include "Button.h"
 
-Button::Button(const std::shared_ptr<sf::Texture> &texture, const sf::Vector2f& pos, std::function<void()>clickAction_) : UIComponent(texture,  pos)
+Button::Button(const std::shared_ptr<sf::Texture> &texture, const sf::Vector2f& pos, std::function<void()> &clickAction_) : UIComponent(texture,  pos)
 {
 	clickAction = clickAction_;
 }
@@ -22,6 +22,10 @@ void Button::click(const sf::Vector2f& mousePos)
 	if (this->isPointed(mousePos)) {
 		clickAction();
 	}
+}
+
+void Button::press(const sf::Keyboard::Key &key)
+{
 }
 
 void Button::shrink()

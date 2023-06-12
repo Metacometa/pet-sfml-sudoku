@@ -9,4 +9,5 @@ public:
 
 	void update(const sf::Vector2f& mousePos);
 	void click(const sf::Vector2f& mousePos);
+	void press(const sf::Keyboard::Key &key);
 };

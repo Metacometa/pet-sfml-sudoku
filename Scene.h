@@ -11,7 +11,7 @@
 #include "Button.h"
 #include "Image.h"
 
-class Scene : public IRenderable, public IUpdateable, public IClickable
+class Scene : public IRenderable, public IUpdateable, public IClickable, public IPressable
 {
 public:
 	std::unordered_map<std::string, std::shared_ptr<sf::Texture>> textures;
@@ -21,10 +21,12 @@ public:
 	std::list<std::weak_ptr<IRenderable>> renderableComponents;
 	std::list<std::weak_ptr<IUpdateable>> updateableComponents;
 	std::list<std::weak_ptr<IClickable>> clickableComponents;
+	std::list<std::weak_ptr<IPressable>> pressableComponents;
 
 public:
 	void render(sf::RenderTarget* target);
 	void update(const sf::Vector2f& mousePos);
 	void click(const sf::Vector2f& mousePos);
+	void press(const sf::Keyboard::Key &key);
 };
 

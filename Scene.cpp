@@ -21,3 +21,10 @@ void Scene::click(const sf::Vector2f& mousePos)
 	}
 }
 
+void Scene::press(const sf::Keyboard::Key& key)
+{
+	for (auto& i : pressableComponents) {
+		i.lock()->press(key);
+	}
+}
+
